@@ -216,22 +216,22 @@ The proposed research would involve creating mathematical models that simulate t
 
 <p><strong>Strengths:</strong></p>
 <ol>
-    <li>The claims in the paper are supported by accurate experiments vs SOTA approaches for the time-series</li>
-    <li>Temporal decoder</li>
+    <li>The assertions presented are backed by precise experiments and comparative analyses against state-of-the-art methods for forecasting time series.</li>
+    <li>From an architecture point of view, temporal decoder is novel and the handling of the covariate in both the encoder and decoder is also novel.</li>
     <li>Empirical Analysis shows TiDE is 5-10x faster than earlier works.</li>
 </ol>
 
 <p><strong>Weakness:</strong></p>
 <ol>
-    <li>Misses a series of the SOTA baseline models and dataset to test</li>
-    <li>Ablation Study is not thorough</li>
+    <li>The robustness of TiDE against overfitting, especially in scenarios with limited training data or highly noisy datasets, is not extensively discussed. </li>
+    <li>The ablation study lacks depth. It is recommended that the authors expand their analysis to encompass the impact of different elements within the architecture, such as whether covariates are included or excluded.</li>
 </ol>
 
 <p><strong>Questions:</strong></p>
 <ol>
-    <li>Do LSTMs and other baselines utilize same attributes (look-back truth values, attributes, etc.)?</li>
-    <li>Sec.6.2: Do these 5x and 10x efficiency numbers hold true for datasets other than Electricity?</li>
+    <li>Sec.5.4: Do these 5x and 10x efficiency numbers hold true for datasets other than traffic dataset?</li>
     <li>As the time-sequence progresses (L increases), the compute cost of the architectures increases since it sees both y_{1:L} and x_{1:L+H}. How much is the compute compared to LSTMs / Transformers?</li>
+    <li>Could you expand on the interpretability of your model's predictions and the underlying decision-making process?</li>
 </ol>
 
 <p><strong>Soundness:</strong> 4</p>
@@ -246,22 +246,22 @@ The proposed research would involve creating mathematical models that simulate t
 
 <p><strong>Strength:</strong></p>
 <ol>
-    <li>The proposed algo is competitive for various benchmarks</li>
-    <li>TiDE seems to be able to model many interactions</li>
-    <li>The Proposed Algorithm is simple, efficient, and residual formulation</li>
+    <li>The proposed algorithm is also competitive for various benchmarks and has computational benefits over more complex neural architectures.</li>
+    <li>TiDE seems to have inference and training time improvements compared to the baselines.</li>
+    <li>The Proposed Algorithm is simple, efficient, and authors report their hyperparameter search parameters.</li>
 </ol>
 
 <p><strong>Weakness:</strong></p>
 <ol>
-    <li>Missing evaluations of the other baselines that are well suited to the task at hand.</li>
-    <li>Missing many related works</li>
+    <li>The paper doesn’t extensively discuss the flexibility of TiDE in terms of hyperparameter tuning or adaptability to different types of time-series data, which could be a limitation for users looking for highly customizable solutions.</li>
+    <li>The paper might not explicitly address how TiDE handles seasonality and long-term trends in data, which are critical aspects of time-series analysis.</li>
 </ol>
 
 <p><strong>Questions:</strong></p>
 <ul>
-    <li>In Sec.4.Model: you say "Our model is applied in a channel independent manner.." what does it mean to say channel dependency or independency? Does it refer to some statistic that is common across many time-series?</li>
-    <li>Why do you not consider other RNN works that model long range dependencies?</li>
-    <li>Sec.5.2: Why does LSTM only have one layer and transformer two layers in the synthetic experiments?</li>
+    <li>How does your model handle edge cases or outliers within the dataset?</li>
+    <li>Is there a particular reason for choosing the specific parameters of your model, and could you elaborate on their impact?</li>
+    <li>How robust is your model to parameter changes, and have you explored parameter sensitivity analysis?</li>
 </ul>
 
 <p><strong>Soundness:</strong> 3</p>
