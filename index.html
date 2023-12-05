@@ -130,11 +130,39 @@
   </ol>
 
 <h2>Paper Analysis and Diagrams:</h2>
-<img src="images/architecture.png" alt="Rajat Sen" style="width:600px; height:600px;"></img>
-<img src="images/results_1.png" alt="Rajat Sen" style="width:600px; height:300px;"></img>
-<img src="images/results_2.png" alt="Rajat Sen" style="width:600px; height:300px;"></img>
-<img src="images/results_5.png" alt="Rajat Sen"style="width:600px; height:300px;"></img>
-<img src="images/results_4.png" alt="Rajat Sen" style="width:600px; height:300px;"></img>
+<p>There are <i>N</i> time-series in the dataset. The look-back of the <i>i</i>-th time-series will be denoted by y<sup>(i)</sup><sub>1:L</sub>, while the horizon is denoted by y<sup>(i)</sup><sub>L+1:L+H</sub>. The task of the forecaster is to predict the horizon time-points given access to the look-back. The static attributes of a time-series denoted by a<sup>(i)</sup> such as features of a product in retail that do not change with time.</p>
+
+<center><img src="images/equation.png" alt="equation" style="width:600px; height:200px;"></img><br><br></center>
+<b>Architecure:</b><br>
+<center>
+<img src="images/architecture.png" alt="architecture" style="width:600px; height:600px;"></img></center>
+<p><b>Dense Encoder:</b>
+TiDE begins by first encoding the past of a time series along with any associated covariates i.e. stack and flatten all the past and future projected covariates, concatenate them with the static attributes and the past of the time-series. Then map them to an embedding using an encoder which contains multiple residual blocks. These covariates could be any external factors or indicators that influence the time series. The encoding process is executed using dense MLPs. Each layer in this MLP serves as a transformation, capturing increasingly abstract representations of the input data. By the end of the encoding phase, the model distills the past time series and covariates into a dense hidden representation, a vector filled with learned features that best describe the data’s patterns and relationships.<p>
+
+<p><b>Dense Decoder:</b>
+The decoding in our model maps the encoded hidden representations into future predictions of time series. The first decoding unit is a stacking of several residual blocks like the encoder with the same hidden layer sizes. This phase is responsible for predicting future values based on the extracted features. Another set of dense MLPs is used for this purpose, taking the hidden representation and generating a series of future predictions.</p>
+
+<p><b>Temporal Decoder:</b>
+A unique component of TiDE is the introduction of a temporal decoder. While the primary decoder produces a basic forecast, the temporal decoder refines these predictions by adapting them to future covariates. This is crucial because, in real-world scenarios, external influences can cause drastic shifts in time series data. The temporal decoder ensures that these potential future changes are considered, allowing for more accurate and adaptable forecasts. This operation adds a "highway" from the future covariates to the prediction. This can be useful if some covariates have a strong direct effect on a particular time-step’s actual value. For instance, in retail demand forecasting a holiday like Mother’s day might strongly affect the sales of certain gift items. Such signals can be lost or take longer for the model to learn in absence of such a highway.</p>
+<p><b>Results:</b></p>
+<p>Multivariate long-term forecasting results with our model. T ∈ {96, 192, 336, 720} for all datasets. The best results including the ones that cannot be statistically distinguished from the best mean numbers are in <strong>bold</strong>. We calculate standard error intervals for our method over 5 runs.</p>
+<center><img src="images/results.png" alt="results"style="width:800px; height:400px;"></img><br></center>
+<br>
+<p><b>Results from Demand Forecasting Experiment (M5 forecasting competition):</b></p>
+<p>In Figure 2 The bars show how long it takes for each model to process one batch of data during inference (i.e., making predictions).
+The TiDE model has significantly lower inference times across all look-back lengths compared to PatchTST, which indicates that TiDE is more efficient in making predictions.</p>
+<center><img src="images/results_1.png" alt="results_1" style="width:600px; height:300px;"></center><br>
+<b>Results from Ablation Study:</b></p>
+<p>
+In Figure 3 in the time instances following the event the model without the temporal decoder is thrown off possibly because it has not yet readjusted its past to what it should have
+been without the event
+In Figure 4 the results are shown for multiple horizon length tasks and show that in all cases the performance becomes better with increasing context size as expected.  In Table 5 the results of TiDE (no res) i.e. removed all the residual connections is compared with residual connections, there is a statistically significant drop in performance without the residual connections.</p>
+
+      <center> <p> <img src="images/results_2.png" alt="results_1" style="width:700px; height:400px;"></p></center> 
+
+       <center>  <img src="images/results_5.png" alt="results_2" style="width:700px; height:300px;"></center> 
+
+
 <h2>Social Impact:</h2>
 <p><b>Positive Impacts:</b>
 <ol>
@@ -174,6 +202,14 @@
 </ul>
 </p>
 <h2>Follow-on Research: Academic Research:</h2>
+<p>
+  A potential future academic research direction could be to analyze Multi-Layer Perceptrons (MLPs) and Transformer architectures (including their non-linearity aspects) under a simple mathematical model for time-series data. The model would simulate time-series data that reflects key characteristics like seasonality (cyclical patterns) and trends (upward or downward movements over time).
+It would likely include a variety of scenarios, from simple (e.g., linear trends or regular cycles) to complex (e.g., irregular patterns, abrupt changes).
+The model should be flexible enough to vary the level of noise, periodicity, and trend complexity to test the architectures under different data conditions.<br><br>
+This research would aim to quantify the advantages and disadvantages of these architectures for different levels of seasonality and trends in time-series forecasting. The study would also consider the fact that Transformers are generally more parameter-efficient than MLPs, albeit being more memory and compute-intensive. This exploration could provide valuable insights into optimizing these models for specific forecasting scenarios, balancing efficiency and accuracy.<br> <br>
+Time-series data often exhibit seasonality (patterns that repeat over known, fixed periods) and trends (long-term increase or decrease in the data). Understanding how MLPs and Transformers capture these elements is crucial for accurate forecasting.
+The proposed research would involve creating mathematical models that simulate time-series data with varying levels of seasonality and trend complexities. These models would then be used to test the performance of MLPs and Transformers.</p> 
+
 <h2>Peer Review (NeurIPS Review):</h2>
 <h4>Rohit Sahoo (8/10)</h4>
 <p><strong>Summary:</strong> The authors propose a new MLP-based encoder-decoder model for long-term time-series forecasting that combines the simplicity and speed of linear models while also being able to handle covariates and non-linear dependencies. They theoretically prove that their formulation obtains a near optimal rate for linear dynamical systems and empirical results demonstrate that their proposed algorithm matches or outperforms other benchmark algorithms on popular time-series benchmarks while having computational advantages in training and inference over state-of-the-art transformer models.</p>
