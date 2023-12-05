@@ -105,7 +105,7 @@
   <li><b>VAR Model (Zivot and Wang, 2006):</b></li>
   <p>Vector Autoregression (VAR) is a fundamental model in econometrics that captures the linear interdependencies among multiple time series. The model considers the history of all variables in the system to predict future values. It's particularly useful in situations where the variables influence each other.</p>
 
-  <li><b>VAR Model (Zivot and Wang, 2006):</b></li>
+  <li><b>LongTrans (Shiyang Li et al., 2019):</b></li>
   <p>The LongTrans model introduces a way to handle long sequences of data without overwhelming computational requirements. It uses an attention mechanism that is specifically designed to be space and computationally efficient. The "LogSparse" design refers to the idea of capturing local patterns within the data while maintaining a manageable level of computational complexity.</p>
 
   <li><b>Informer  (Zhou et al., 2021):</b></li>
@@ -230,7 +230,7 @@ The proposed research would involve creating mathematical models that simulate t
 <p><strong>Questions:</strong></p>
 <ol>
     <li>Sec.5.4: Do these 5x and 10x efficiency numbers hold true for datasets other than traffic dataset?</li>
-    <li>As the time-sequence progresses (L increases), the compute cost of the architectures increases since it sees both y_{1:L} and x_{1:L+H}. How much is the compute compared to LSTMs / Transformers?</li>
+    <li>As the time-sequence progresses (L increases), the compute cost of the architectures increases since it sees both y</sup><sub>1:L</sub> and x<sub>L+1:L+H</sub>. How much is the compute compared to LSTMs / Transformers?</li>
     <li>Could you expand on the interpretability of your model's predictions and the underlying decision-making process?</li>
 </ol>
 
@@ -253,16 +253,16 @@ The proposed research would involve creating mathematical models that simulate t
 
 <p><strong>Weakness:</strong></p>
 <ol>
-    <li>The paper doesn’t extensively discuss the flexibility of TiDE in terms of hyperparameter tuning or adaptability to different types of time-series data, which could be a limitation for users looking for highly customizable solutions.</li>
+    <li>The paper doesn't extensively discuss the flexibility of TiDE in terms of hyperparameter tuning or adaptability to different types of time-series data, which could be a limitation for users looking for highly customizable solutions.</li>
     <li>The paper might not explicitly address how TiDE handles seasonality and long-term trends in data, which are critical aspects of time-series analysis.</li>
 </ol>
 
 <p><strong>Questions:</strong></p>
-<ul>
+<ol>
     <li>How does your model handle edge cases or outliers within the dataset?</li>
     <li>Is there a particular reason for choosing the specific parameters of your model, and could you elaborate on their impact?</li>
     <li>How robust is your model to parameter changes, and have you explored parameter sensitivity analysis?</li>
-</ul>
+</ol>
 
 <p><strong>Soundness:</strong> 3</p>
 <p><strong>Presentation:</strong> 4</p>
