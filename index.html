@@ -269,8 +269,18 @@ The proposed research would involve creating mathematical models that simulate t
 <p><strong>Contribution:</strong> 4</p>
 <p><strong>Overall:</strong> 8: Strong Accept: Technically strong paper with excellent evaluation.</p>
 <p><strong>Confidence:</strong> 4</p>
+</p>
 
-<h2>Implementation and Findings</h2>
+<h2>Implementation and Findings:</h2>
+<p>Our team successfully implemented the architecture and code provided by Google Research for the TiDE (Temporal Decoder) model. We conducted tests on weather data, verifying the model's performance against expected outcomes. Our initial findings were promising: after just a single training epoch, the TiDE model achieved a Mean Squared Error (MSE) of 0.35. This improved markedly with continued training, dropping to an MSE of 0.23 after six epochs, over a forecast horizon of 96 time points.<br><br>
+
+Additionally, we extended our testing to include the Australian Beer Dataset. This choice was inspired by a comparative study in the original TiDE paper, where the authors benchmarked the TiDE model against N-HiTS (Neural Hierarchical Interpolation for Time Series Forecasting). This comparative analysis is crucial for understanding the efficacy of TiDE in diverse forecasting scenarios. Our tests aimed to replicate and scrutinize these comparisons, offering a deeper insight into the model's versatility and accuracy across different types of time series data.<br><br>
+
+<b>Results:<b>
+
+<center> <p> <img src="images/results_run_1.png" alt="results_run_1" style="width:900px; height:400px;"></p></center> 
+<center> <p> <img src="images/results_run_2.png" alt="results_run_2" style="width:600px; height:500px;"></p></center> 
+
 </p>
 <h3>References</h3>
 
