@@ -22,8 +22,7 @@
 <div class="nd-pageheader">
  <div class="container">
  <h1 class="lead">
- <nobr class="widenobr">Your Project Name</nobr>
- <nobr class="widenobr">For CS 7150</nobr>
+ <nobr class="widenobr">Long-term Forecasting with TiDE: Time-series Dense Encoder</nobr>
  </h1>
  </div>
 </div><!-- end nd-pageheader -->
@@ -31,34 +30,253 @@
 <div class="container">
 <div class="row">
 <div class="col justify-content-center text-center">
-<h2>An Analysis of [papername]</h2>
-<p>Describe the paper and the big question about it that interests you.</p>
+<h2>An Analysis of "Long-term Forecasting with TiDE: Time-series Dense Encoder"</h2>
+<p>Analysis by: Rohit Sisir Sahoo and Pratik Satish Hotchandani
+<p></p>
 </div>
 </div>
 <div class="row">
 <div class="col">
+<p><b>Abstract: </b>Recent work has shown that simple linear models can outperform several Transformer based approaches in long term time-series forecasting. Motivated by this, we propose a Multi-layer Perceptron (MLP) based encoder-decoder model, Time-series Dense Encoder (TiDE), for long-term time-series forecasting that enjoys the simplicity and speed of linear models while also being able to handle covariates and non-linear dependencies. Theoretically, we prove that the simplest linear analogue of our model can achieve near optimal error rate for linear dynamical systems (LDS) under some assumptions. Empirically, we show that our method can match or outperform prior approaches on popular long-term time-series forecasting benchmarks while being 5-10x faster than the best Transformer based model.</p>
+<h2>Biography (Authors):</h2>
 
-<h2>Literature Review; Biography; Social Impact; Industry Applications; Follow-on Research; and Peer-Review</h2>
+<div class="image-container image1">
+      <div class="containerImg">
+          <img src="images/abhimanyu.jpg" alt="Abhimanyu Das" style="width:150px; height:150px;">
+          <p> <b> Abhimanyu Das </b> <br>
+              Research Scientist at Google <br>
+              Prior: Researcher at Microsoft, Yahoo! Labs <br>
+              PhD from University of Southern California <br>
+              Bachelors from Indian Institute of Technology, Delhi<br>
+          </p>
+      </div>
+      <br>
+      <div class="containerImg">
+          <img src="images/weihao.jpg" alt="Weihao Kong" style="width:200px; height:150px;">
+          <p><b> Weihao Kong </b> <br>
+              Research Scientist at Google <br>
+              Prior: Researcher at University of Washington <br>
+              PhD from Stanford (2019)<br>
+              Bachelors from Shanghai Jiao Tong University<br>
+          </p>
+      </div>
+      <br>
+      <div class="containerImg">
+          <img src="images/andrew.jpeg" alt="Andrew Leach" style="width:150px; height:150px;">
+          <p> <b>Andrew Leach</b> <br>
+              Machine Learning Engineer at Google Cloud <br>
+              PhD from University of Arizona <br>
+              BS from University at Buffalo: The State University of New York<br>
+          </p>
+      </div>
+      <br>
+      <div class="containerImg">
+          <img src="images/shaan.jpeg" alt="Shaan Mathur" style="width:150px; height:150px;">
+          <p> <b> Shaan Mathur</b> <br>
+              Machine Learning Engineer at Google Cloud <br>
+              BS and MS From University of California at Los Angeles (UCLA)<br>
+          </p>
+      </div>
+      <br>
+      <div class="containerImg">
+          <img src="images/rajat.jpeg" alt="Rajat Sen" style="width:150px; height:150px;">
+          <p> <b> Rajat Sen </b> <br>
+              Research Scientist at Google <br>
+              PhD from University of Texas at Austin (UT Austin) <br>
+              Bachelors from Indian Institute of Technology, Kharagpur <br>
+          </p>
+      </div>
+      <br>
+      <div class="containerImg">
+          <img src="images/rose.jpg" alt="Rose Yu" style="width:150px; height:200px;">
+          <p> <b> Rose Yu</b> <br>
+              Professor at UC San Diego <br>
+              Prior: Visiting Researcher at Google Cloud <br>
+              Professor at Khoury College of Computer Sciences, Northeastern University (CS 7180, CS6140, CS 7140) <br>
+              PhD from University of Southern California<br>
+              BS from Zhejiang University</br>
+          </p>
+      </div>
+      </div>
+<h2>Literature Review: </h2>
+<p>Models for long-term forecasting can be broadly divided into either multivariate models or univariate models</p>
+<p><b>Multivariate Time Series Forecasting:</b></p>
+<ol>
+  <li><b>VAR Model (Zivot and Wang, 2006):</b></li>
+  <p>Vector Autoregression (VAR) is a fundamental model in econometrics that captures the linear interdependencies among multiple time series. The model considers the history of all variables in the system to predict future values. It's particularly useful in situations where the variables influence each other.</p>
 
-<p>Just as we have done in the role-playing exercise, analyze the paper from all perspectives.
+  <li><b>VAR Model (Zivot and Wang, 2006):</b></li>
+  <p>The LongTrans model introduces a way to handle long sequences of data without overwhelming computational requirements. It uses an attention mechanism that is specifically designed to be space and computationally efficient. The "LogSparse" design refers to the idea of capturing local patterns within the data while maintaining a manageable level of computational complexity.</p>
+
+  <li><b>Informer  (Zhou et al., 2021):</b></li>
+  <p>The Informer model addresses the problem of processing long sequences in time series data by using a special kind of attention mechanism called ProbSparse self-attention. This method selectively focuses on the most important parts of the data, which allows it to scale well with longer time contexts without a significant increase in computation, hence achieving sub-quadratic complexity.</p>
+
+  <li><b>Autoformer (Wu et al., 2021):</b></li>
+  <p>This paper presents a model that decomposes time series data into trend and seasonal components before applying a specialized self-attention mechanism. By doing so, the model can focus on long-term dependencies and recurring patterns in the data, which is beneficial for capturing complex temporal dynamics with reduced computational demands.</p>
+  </ol>
+  <p><b>Univariate Time Series Forecasting:</b></p>
+<ol>
+  <li><b>AR and ARIMA(McKenzie, 1984):</b></li>
+  <p>The Autoregressive (AR) model is a basic time series model that predicts future data based on past values of the same series. The idea is that past data points have a "memory" effect that can help forecast future points. ARIMA stands for Autoregressive Integrated Moving Average. It's an extension of the AR model that includes differencing (to make the data more stationary) and a moving average component to smooth out random fluctuations or noise in the data.</p>
+
+  <li><b>Deepar (Salinas, 2020):</b></li>
+  <p>DeepAR is a probabilistic forecasting model that uses recurrent neural networks (RNNs). It's designed to capture complex patterns in the data by learning from similar time series and can provide uncertainty estimates for its forecasts.</p>
+
+  <li><b>Are transformers effective for time series forecasting? (Zheng et al., 2023):</b></li>
+  <p>This study examines the effectiveness of transformer models, which are known for their powerful self-attention mechanisms, in the context of time series forecasting. It suggests that simpler linear global univariate models may outperform transformers for long-term forecasting tasks. DLinear is a model that directly learns a linear relationship from past data to future predictions. It challenges the idea that complex models with approximate self-attention mechanisms are necessary, showing that sometimes a simpler, direct linear approach is sufficient.</p>
+
+   <li><b>PatchTST(Nie et al., 2022):</b></li>
+  <p>Instead of looking at the time series data point by point, PatchTST divides the time series into contiguous segments, or "patches." These patches are similar to "words" in the language context for which transformers were originally designed. These patches are then fed into the transformer as if they were tokens. This method allows the model to process segments of the series at a time, capturing the local information within each patch. This approach is shown to be competitive and even superior to more complex models in certain long-term forecasting scenarios.</p>
+  </ol>
+
+<h2>Paper Analysis and Diagrams:</h2>
+<img src="images/architecture.png" alt="Rajat Sen" style="width:600px; height:600px;"></img>
+<img src="images/results_1.png" alt="Rajat Sen" style="width:600px; height:300px;"></img>
+<img src="images/results_2.png" alt="Rajat Sen" style="width:600px; height:300px;"></img>
+<img src="images/results_5.png" alt="Rajat Sen"style="width:600px; height:300px;"></img>
+<img src="images/results_4.png" alt="Rajat Sen" style="width:600px; height:300px;"></img>
+<h2>Social Impact:</h2>
+<p><b>Positive Impacts:</b>
+<ol>
+<li><b>Improved Decision-Making in Various Sectors:</b> TiDE's ability to accurately forecast long-term trends in time-series data can aid decision-making in various sectors like finance, energy, transportation, and retail. Better predictions can lead to more efficient resource allocation and strategic planning.</li>
+<li><b>Enhanced Economic Stability:</b> In finance and economics, improved forecasting models like TiDE can help in anticipating market trends, aiding in more stable economic planning and reducing the likelihood of crises caused by unexpected market behaviors.</li>
+<li><b>Advancements in Climate and Energy Sector:</b> Accurate long-term forecasting can significantly benefit climate science and energy management. Predicting weather patterns, energy demands, and resource availability can lead to better environmental management and policy-making.</li>
+<li><b>Innovation in Technology and AI: </b>TiDE's approach contributes to the broader field of artificial intelligence and machine learning, potentially spurring further innovations in these areas.</li>
+<li><b>Healthcare and Pandemic Forecasting:</b> In healthcare, long-term forecasting models can be crucial in predicting disease spread, resource requirements, and managing public health crises like pandemics.</li>
+</ol>
+</p>
+<p><b>Negative Impacts:</b>
+
+<ol>
+<li><b>Dependency and Overreliance:</b> An overreliance on automated forecasting could lead to reduced human expertise in these areas. In cases where the model might fail or provide inaccurate predictions, this could have severe consequences.</li>
+<li><b>Privacy Concerns:</b> The use of extensive time-series data, especially in sectors like healthcare or finance, raises concerns about privacy and data security. Ensuring the ethical use of data and protecting individual privacy is a significant challenge.</li>
+<li><b>Economic Disparities:</b> Advanced forecasting tools could widen the gap between organizations or countries that have access to these technologies and those that do not. Smaller entities might struggle to compete with larger ones that can leverage these advanced predictive models.</li>
+<li><b>Misinterpretation and Misuse:</b> Incorrect interpretation of model outputs could lead to misguided decisions, especially in critical areas like finance or healthcare. Additionally, there's a risk of misuse in manipulating markets or influencing public opinion based on forecasted data.</li>
+<li><b>Job Displacement:</b> Automation in forecasting might reduce the need for human analysts in various fields, potentially leading to job displacement.</li>
+</ol>
 </p>
 
-<p>Optionally, in addition to a reading-based analysis, implement the ideas of the paper in code, and report on your findings.
+<h2>Industry Applications:</h2>
+<p><b>Integration of TiDE (Time Series Dense Encoder) into Google's Vertex AI</b>
+<p>Vertex AI offers a platform to build and use generative AI—from AI solutions, to Search and Conversation, to 100+ foundation models, to a unified AI platform.</p>
+<ul>
+<li><b>Performance Improvement: </b>The implementation of TiDE in Vertex AI offers a 10x training throughput improvement without compromising on model accuracy. This makes it an attractive solution for industries dealing with large datasets that require rapid processing.</li>
+<li><b>Versatility Across Industries: </b>Vertex AI, powered by TiDE, is already serving diverse sectors like fashion retail, grocery, consumer packaged goods, energy, finance, and electronics, showcasing the model's versatility and adaptability.</li>
+<li><b>Real-World Impact: </b> Hitachi Energy has used TiDE for advancing energy predictions, demonstrating its practical applicability and effectiveness. Groupe Casino (a French mass-market retail group) also benefited from TiDE through improved forecast accuracy and reduced model training time, directly impacting their business efficiency.</li>
+<li><b>Simplified and Efficient Forecasting: </b>TiDE's simpler MLP architecture, compared to state-of-the-art transformer models, not only simplifies the forecasting process but also provides substantial improvements in training and prediction throughput.</li>
+</ul>
 </p>
+<p> <b> Other potential Industrial Applications: </b></p>
+<ul>
+<li><b>Retail and Inventory Management: </b>TiDE can revolutionize retail by providing accurate long-term forecasts for consumer demand. This accuracy helps in inventory optimization, preventing overstocking or stockouts, and ensuring that popular items are always available. Retail giants can benefit from more precise demand forecasting, leading to reduced waste and increased customer satisfaction.</li>
+<li><b>Financial Markets and Economic Forecasting: </b>TiDE can be used by financial institutions for predicting market trends, aiding in investment strategies and risk management. Its long-term forecasting capabilities are particularly useful for spotting potential economic shifts, aiding policymakers and investors in making informed decisions.</li>
+<li><b>Supply Chain Optimization: </b>In logistics and supply chain management, TiDE can predict transportation and distribution needs, helping companies optimize routes and reduce costs. Accurate forecasting can significantly improve the efficiency of supply chains, especially in industries with complex logistics like automotive and manufacturing.</li>
+</ul>
+</p>
+<h2>Follow-on Research: Academic Research:</h2>
+<h2>Peer Review (NeurIPS Review):</h2>
+<h4>Rohit Sahoo (8/10)</h4>
+<p><strong>Summary:</strong> The authors propose a new MLP-based encoder-decoder model for long-term time-series forecasting that combines the simplicity and speed of linear models while also being able to handle covariates and non-linear dependencies. They theoretically prove that their formulation obtains a near optimal rate for linear dynamical systems and empirical results demonstrate that their proposed algorithm matches or outperforms other benchmark algorithms on popular time-series benchmarks while having computational advantages in training and inference over state-of-the-art transformer models.</p>
 
+<p><strong>Strengths:</strong></p>
+<ol>
+    <li>The claims in the paper are supported by accurate experiments vs SOTA approaches for the time-series</li>
+    <li>Temporal decoder</li>
+    <li>Empirical Analysis shows TiDE is 5-10x faster than earlier works.</li>
+</ol>
+
+<p><strong>Weakness:</strong></p>
+<ol>
+    <li>Misses a series of the SOTA baseline models and dataset to test</li>
+    <li>Ablation Study is not thorough</li>
+</ol>
+
+<p><strong>Questions:</strong></p>
+<ol>
+    <li>Do LSTMs and other baselines utilize same attributes (look-back truth values, attributes, etc.)?</li>
+    <li>Sec.6.2: Do these 5x and 10x efficiency numbers hold true for datasets other than Electricity?</li>
+    <li>As the time-sequence progresses (L increases), the compute cost of the architectures increases since it sees both y_{1:L} and x_{1:L+H}. How much is the compute compared to LSTMs / Transformers?</li>
+</ol>
+
+<p><strong>Soundness:</strong> 4</p>
+<p><strong>Presentation:</strong> 3</p>
+<p><strong>Contribution:</strong> 4</p>
+<p><strong>Overall:</strong> 8: Strong Accept: Technically strong paper with, with novel ideas, excellent impact on Time Series Domain.</p>
+<p><strong>Confidence:</strong> 4</p>
+
+
+<h4>Pratik Hotchandani: (8/10)</h4>
+<p><strong>Summary:</strong> The paper presents an all-MLP model for time-series forecasting called TiDE. First, they apply a linear projection to reduce the input dimensionality of the time-series (independently for each time step). Then, they flatten all the inputs and they apply a stack of MLP residual blocks. Finally, they stack the initial (reduced) features to a reshaped output, and they apply a decoding step (also an MLP) to get the predictions. They compare TiDE to alternative transformer-based approaches, achieving competitive results.</p>
+
+<p><strong>Strength:</strong></p>
+<ol>
+    <li>The proposed algo is competitive for various benchmarks</li>
+    <li>TiDE seems to be able to model many interactions</li>
+    <li>The Proposed Algorithm is simple, efficient, and residual formulation</li>
+</ol>
+
+<p><strong>Weakness:</strong></p>
+<ol>
+    <li>Missing evaluations of the other baselines that are well suited to the task at hand.</li>
+    <li>Missing many related works</li>
+</ol>
+
+<p><strong>Questions:</strong></p>
+<ul>
+    <li>In Sec.4.Model: you say "Our model is applied in a channel independent manner.." what does it mean to say channel dependency or independency? Does it refer to some statistic that is common across many time-series?</li>
+    <li>Why do you not consider other RNN works that model long range dependencies?</li>
+    <li>Sec.5.2: Why does LSTM only have one layer and transformer two layers in the synthetic experiments?</li>
+</ul>
+
+<p><strong>Soundness:</strong> 3</p>
+<p><strong>Presentation:</strong> 4</p>
+<p><strong>Contribution:</strong> 4</p>
+<p><strong>Overall:</strong> 8: Strong Accept: Technically strong paper with excellent evaluation.</p>
+<p><strong>Confidence:</strong> 4</p>
+
+<h2>Implementation and Findings</h2>
+</p>
 <h3>References</h3>
 
-<p><a name="bottou-1990">[1]</a> <a href="https://papers.baulab.info/Bottou-1990.pdf"
-  >L&eacute;on Bottou and Patrick Gallinari.
-  <em>A framework for the cooperation of learning algorithms.</em></a>
-  Advances in neural information processing systems 3 (1990).
+<p>[1] Shiyang Li, Xiaoyong Jin, Yao Xuan, Xiyou Zhou, Wenhu Chen, Yu-Xiang Wang, and Xifeng Yan. <a href="https://proceedings.neurips.cc/paper_files/paper/2019/file/6775a0635c302542da2c32aa19d86be0-Paper.pdf">
+  <em>Enhancing
+the locality and breaking the memory bottleneck of transformer on time series forecasting. </em> </a>Advances in
+neural information processing systems, 32, 2019a.
 </p>
+
+<p>[2] Haoyi Zhou, Shanghang Zhang, Jieqi Peng, Shuai Zhang, Jianxin Li, Hui Xiong, and Wancai Zhang. <a href="https://arxiv.org/pdf/2012.07436.pdf">
+  <em> Informer:
+Beyond efficient transformer for long sequence time-series forecasting.  </em> </a> In Proceedings of the AAAI conference
+on artificial intelligence, 2021.
+</p>
+
+<p>[3] Haixu Wu, Jiehui Xu, Jianmin Wang, and Mingsheng Long <a href="https://arxiv.org/pdf/2106.13008.pdf">
+  <em>Autoformer: Decomposition transformers with
+auto-correlation for long-term series forecasting </em> </a>Advances in Neural Information Processing Systems, 34:
+22419–22430, 2021.
+</p>
+
+<p>[4] David Salinas, Valentin Flunkert, Jan Gasthaus, and Tim Januschowski. <a href="https://arxiv.org/pdf/1704.04110.pdf">
+  <em>Deepar: Probabilistic forecasting
+with autoregressive recurrent networks. </em> </a>International Journal of Forecasting, 36(3):1181–1191, 2020.
+</p>
+
+<p>[5] Ailing Zeng, Muxi Chen, Lei Zhang, and Qiang Xu <a href="https://arxiv.org/pdf/2205.13504.pdf">
+  <em>Are transformers effective for time series forecasting? </em> </a>Proceedings of the AAAI conference on artificial intelligence, 2023.
+</p>
+
+
+<p>[6] Yuqi Nie, Nam H Nguyen, Phanwadee Sinthong, and Jayant Kalagnanam. <a href="https://arxiv.org/pdf/2211.14730.pdf">
+  <em>A time series is worth 64 words:
+Long-term forecasting with transformers.  </em> </a>International conference on learning representations, 2022.
+</p>
+
 
 <h2>Team Members</h2>
                                                    
-<p>Make sure to list here is who is on the team.</p>
+<p>1. Rohit Sisir Sahoo (MS Computer Science, Northeastern University, sahoo.ro@northeastern.edu)</p>
+<p>2. Pratik Satish Hotchandani (MS Data Science, Northeastern University, hotchandani.p@northeastern.edu)</p>
 
-  
 </div><!--col-->
 </div><!--row -->
 </div> <!-- container -->
@@ -66,7 +284,7 @@
 <footer class="nd-pagefooter">
   <div class="row">
     <div class="col-6 col-md text-center">
-      <a href="https://cs7150.baulab.info/">About CS 7150</a>
+      <a href="https://cs7150.baulab.info/">About CS 7150: Deep Learning (Fall 2023, Northeastern University)</a>
     </div>
   </div>
 </footer>
